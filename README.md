@@ -31,8 +31,6 @@
 ## Table of Contents
 
 * [Built With](#built-with)
-* [Repository Conventions](#repository-conventions)
-  * [Naming](#naming)
 * [Code Conventions](#code-conventions)
   * [Naming](#naming)
 
@@ -40,29 +38,6 @@
 ### Built With
 * [Arduino IDE](https://www.arduino.cc/en/main/software)
 
-<!-- REPOSITORY CONVENTIONS -->
-## Repository Conventions
-Project wide conventions regarding branches and commits. 
-
-### Naming
-#### Branches
-```bash
-echo BRANCHES
-git branch userStoryId/type/taskId_taskName
-```
-##### Types
-* feature
-* bugfix
-
-#### Commits
-```bash
-echo COMMITS
-git commit -m "type: <description>"
-git commit -m "type_type2: <description>"
-```
-##### Types
-* ADD
-* REMOVE
 <!-- CODE CONVENTIONS -->
 ## Code Conventions
 Repository wide code conventions.
