@@ -35,3 +35,15 @@ void printDEC(byte *buffer, byte bufferSize) {
   // Change line once the entire UID is printed
   Serial.println(" ");
 }
+
+// RFID Unique ID HEX graber
+String getUniqueID (){
+  String uniqueID= "";
+  for (byte i = 0; i < mfrc522.uid.size; i++) 
+  {
+     uniqueID.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
+     uniqueID.concat(String(mfrc522.uid.uidByte[i], HEX));
+  }
+    uniqueID.toUpperCase();
+    return uniqueID;
+}

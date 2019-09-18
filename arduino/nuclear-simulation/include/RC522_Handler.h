@@ -6,3 +6,4 @@
 void rc522ScannerLoop();
 void printDEC(byte *, byte); // Grab and print RFID UID
 void setupRFID();
+String getUniqueID();
