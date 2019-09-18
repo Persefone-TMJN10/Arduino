@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.env.windows": {
+        "PATH": "C:\\Users\\Lucky\\.platformio\\penv\\Scripts;C:\\Users\\Lucky\\.platformio\\penv;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Users\\Lucky\\AppData\\Local\\Microsoft\\WindowsApps;C:\\altera\\13.0sp1\\modelsim_ase\\win32aloem;C:\\Users\\Lucky\\AppData\\Local\\atom\\bin;C:\\Users\\Lucky\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Lucky\\AppData\\Local\\Programs\\Python\\Python37;;%USERPROFILE%\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Users\\Lucky\\AppData\\Local\\Microsoft\\WindowsApps;C:\\altera\\13.0sp1\\modelsim_ase\\win32aloem;C:\\Users\\Lucky\\AppData\\Local\\atom\\bin;C:\\Users\\Lucky\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Lucky\\AppData\\Local\\Programs\\Python\\Python37;;%USERPROFILE%\\AppData\\Local\\Microsoft\\WindowsApps",
+        "PLATFORMIO_CALLER": "vscode"
+    }
+}
