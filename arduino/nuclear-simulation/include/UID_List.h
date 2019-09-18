@@ -3,7 +3,7 @@
 #include <SPI.h>
 
 
-boolean checkUID(char*);
-boolean isClockedIn(char*);
+boolean checkUID(String);
+boolean isClockedIn(String);
 
 
