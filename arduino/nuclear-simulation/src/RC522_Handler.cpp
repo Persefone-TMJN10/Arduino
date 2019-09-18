@@ -9,7 +9,7 @@ void setupRFID() {
   Serial.begin(9600); // init serial communications with the PC
   SPI.begin();
   mfrc522.PCD_Init();
-  Serial.println("Scan PICC to se UID and type...");
+  Serial.println("Scan PICC to see UID and type...");
 }
 
 void rc522ScannerLoop() {
@@ -23,8 +23,28 @@ void rc522ScannerLoop() {
 		return;
 	}
 
+  // Check if ID is registered and clocked in
+  if (authorizeUID()){
+    // Send BlueTooth (?)
+    // turn on green led
+    digitalWrite(LED_G, HIGH);
+    delay(ACCESS_DELAY);
+    digitalWrite(LED_G, LOW);
+  } else {
+    //turn on red led
+    delay(DENIED_DELAY);
+  }
+
 	// Dump debug info about the card. PICC_HaltA() is automatically called.
-	mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
+	// mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
+}
+
+boolean authorizeUID () {
+  // Hard coded ID should be replaced with the user list
+  if (getUniqueID().substring(1) == "80 53 80 4D") {
+    return true;
+  }
+  return false;
 }
 
 // RFID Unique ID printer
