@@ -62,35 +62,35 @@ boolean isClockedIn(String scannedUID) {
 
 int x = 0;
     if (scannedUID == "34 4Y 5H J7") {
-        if(clockedStatus[x] == 0) 
+        if(clockedStatus[x] == 1) 
                 return true;
             else
                 return false;
         return true;
     } else if (scannedUID == "78 4E 4T H6") {
         x = 1;
-        if(clockedStatus[x] == 0) 
+        if(clockedStatus[x] == 1) 
                 return true;
             else
                 return false;
         return true;
     } else if (scannedUID == "85 3A 2G G9") {
         x = 2;
-        if(clockedStatus[x] == 0) 
+        if(clockedStatus[x] == 1) 
                 return true;
             else
                 return false;
         return true;
     } else if (scannedUID == "86 3B 2F F8") {
         x = 3;
-        if(clockedStatus[x] == 0) 
+        if(clockedStatus[x] == 1) 
                 return true;
             else
                 return false;
         return true;
     } else if (scannedUID == "80 53 80 4D") {
         x = 4;
-        if(clockedStatus[x] == 0) 
+        if(clockedStatus[x] == 1) 
                 return true;
             else
                 return false;

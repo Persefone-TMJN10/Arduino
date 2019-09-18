@@ -9,7 +9,7 @@ void setupRFID() {
   Serial.begin(9600); // init serial communications with the PC
   SPI.begin();
   mfrc522.PCD_Init();
-  Serial.println("Scan PICC to se UID and type...");
+  Serial.println("Scan PICC to see UID and type...");
 }
 
 void rc522ScannerLoop() {
@@ -31,6 +31,10 @@ void rc522ScannerLoop() {
       digitalWrite(LED_G, HIGH);
       delay(ACCESS_DELAY);
       digitalWrite(LED_G, LOW);
+    } else {
+      digitalWrite(LED_B, HIGH);
+      delay(ACCESS_DELAY);
+      digitalWrite(LED_B, LOW);
     }
     // else clocking out
     // Send bluetooth
