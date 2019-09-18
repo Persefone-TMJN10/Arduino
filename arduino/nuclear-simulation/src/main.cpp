@@ -3,6 +3,7 @@
 void setup() {
   // put your setup code here, to run once:
   pinMode(LED_G, OUTPUT);
+  pinMode(LED_B, OUTPUT);
   setupRFID();
 }
 
