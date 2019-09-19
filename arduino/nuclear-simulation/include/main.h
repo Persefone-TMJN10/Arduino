@@ -25,4 +25,5 @@
 
 // Bluetooth protocol
 #define CLOCKED_STATUS 0 // Data associated with clocked in or out
+#define RADIATION_VALUE 1 // Data associated with the calculated radiation value
 
