@@ -5,4 +5,4 @@ void setupBluetooth();
 
 void btLoop();
 
-void btSendData();
+void btSendData(int, String, int);

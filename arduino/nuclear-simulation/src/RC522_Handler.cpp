@@ -25,13 +25,13 @@ void rc522ScannerLoop() {
 
   // Check if ID is registered and clocked in
   if (authorizeUID()){
-    // if (ClockinggIn) 
-    // Send BlueTooth (?)
     if(isClockedIn(getUniqueID().substring(1))){
+      btSendData(CLOCKED_STATUS, getUniqueID(), CLOCKED_IN);
       digitalWrite(LED_G, HIGH);
       delay(ACCESS_DELAY);
       digitalWrite(LED_G, LOW);
     } else {
+      btSendData(CLOCKED_STATUS, getUniqueID(), CLOCKED_OUT);
       digitalWrite(LED_B, HIGH);
       delay(ACCESS_DELAY);
       digitalWrite(LED_B, LOW);
