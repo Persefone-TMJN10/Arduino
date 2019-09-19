@@ -24,7 +24,7 @@ hc06.print(",");
 hc06.print(uniqueID);
 hc06.print(",");
 hc06.print(clockedStatus);
-hc06.print(";");
+hc06.print(",");
 delay(20);
 
 }
