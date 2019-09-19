@@ -1,6 +1,4 @@
-#include <Arduino.h>
-#include <MFRC522.h>
-#include <SPI.h>
+#include <BluetoothHandler.h>
 #include <main.h>
 
 #define ACCESS_DELAY 2000

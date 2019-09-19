@@ -6,10 +6,10 @@ MFRC522 mfrc522(SS_PIN, RST_PIN); // FRID RC522 instance
 
 void setupRFID() {
   // RC522 setup
-  // Serial.begin(9600); // init serial communications with the PC
+  Serial.begin(9600); // init serial communications with the PC
   SPI.begin();
   mfrc522.PCD_Init();
-  Serial.println("Scan PICC to see UID and type...");
+  // Serial.println("Scan PICC to see UID and type...");
 }
 
 void rc522ScannerLoop() {
@@ -48,7 +48,6 @@ void rc522ScannerLoop() {
 }
 
 boolean authorizeUID () {
-  // Hard coded ID should be replaced with the user list
   if (checkUID(getUniqueID().substring(1))) {
     return true;
   }
