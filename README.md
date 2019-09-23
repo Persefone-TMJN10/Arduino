@@ -37,6 +37,8 @@
 <!-- Built With -->
 ### Built With
 * [Arduino IDE](https://www.arduino.cc/en/main/software)
+* [PlatformIO](https://www.platformio.org/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 
 <!-- CODE CONVENTIONS -->
 ## Code Conventions
