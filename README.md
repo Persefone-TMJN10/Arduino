@@ -44,7 +44,22 @@ Repository wide code conventions.
 
 ### Naming
 ```c++
-char codeConventions[] = "soon to be added by Lucky and PappaPolice"
+
+/* VARIABLES */
+float fooBar = 3.6
+
+char* fooBar
+
+const int FOO_BAR = 10
+
+#define FOO_BAR 100
+
+#define NAME_PIN = 7
+
+/* METHODS */
+void fooBar(datatype fooBar) {
+  /*...*/
+}
 ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
