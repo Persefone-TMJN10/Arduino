@@ -1,4 +1,5 @@
 #include <RadiationCalc.h>
+#include <Arduino.h>
 
 
 #define BREAK_ROOM 0.1

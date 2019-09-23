@@ -1,6 +1,12 @@
-#include <RC522_Handler.h>
+#include <Arduino.h>
+#include <MFRC522.h>
+#include <SPI.h>
+
+#include <RfidHandler.h>
 #include <BluetoothHandler.h>
+#include <UserHandler.h>
 #include <main.h>
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(LED_G, OUTPUT);

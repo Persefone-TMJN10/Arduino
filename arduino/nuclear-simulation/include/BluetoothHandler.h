@@ -1,8 +1,8 @@
-#include <main.h>
-#include <SoftwareSerial.h>
+
 
 void setupBluetooth();
 
 void btLoop();
 
-void btSendData(int, String, int);
+void btSendData(int, char*, int);
+void btSendRadData(int , char* , float );

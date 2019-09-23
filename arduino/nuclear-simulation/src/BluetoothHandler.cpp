@@ -1,4 +1,7 @@
 #include <BluetoothHandler.h>
+#include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <main.h>
 
 byte BTVal;
 SoftwareSerial hc06(TX_PIN,RX_PIN);
@@ -18,7 +21,7 @@ void btLoop() {
 
 }
 
-void btSendData(int protocol, String uniqueID, int clockedStatus) {
+void btSendData(int protocol, char* uniqueID, int clockedStatus) {
   hc06.print(protocol);
   hc06.print(",");
   hc06.print(uniqueID);
@@ -29,7 +32,7 @@ void btSendData(int protocol, String uniqueID, int clockedStatus) {
 
 }
 
-void btSendRadData(int protocol, String uniqueID, float radValue) {
+void btSendRadData(int protocol, char* uniqueID, float radValue) {
   hc06.print(protocol);
   hc06.print(",");
   hc06.print(uniqueID);
