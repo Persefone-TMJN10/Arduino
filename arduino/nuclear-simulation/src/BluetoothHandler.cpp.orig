@@ -18,7 +18,17 @@ void btLoop() {
 
 }
 
+
 void btSendData(int protocol, String uniqueID, int clockedStatus) {
+<<<<<<< HEAD
+hc06.print(protocol);
+hc06.print(",");
+hc06.print(uniqueID);
+hc06.print(",");
+hc06.print(clockedStatus);
+hc06.print(",");
+delay(20);
+=======
   hc06.print(protocol);
   hc06.print(",");
   hc06.print(uniqueID);
@@ -28,6 +38,7 @@ void btSendData(int protocol, String uniqueID, int clockedStatus) {
   delay(20);
 
 }
+>>>>>>> 5/feature/16_implementMethodForSendingCalcData
 
 void btSendRadData(int protocol, String uniqueID, float radValue) {
   hc06.print(protocol);
