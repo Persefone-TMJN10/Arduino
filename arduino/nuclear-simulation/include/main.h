@@ -24,3 +24,10 @@
 
 //Piezo Buzzer pin
 #define BUZZER_PIN 8
+
+// Radiation data defines
+#define BREAK_ROOM 0.1
+#define CONTROL_ROOM 0.5
+#define REACTOR_ROOM 1.6
+#define HAZMAT 5
+#define CLOTHES 1

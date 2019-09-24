@@ -1,25 +1,21 @@
 #include <RadiationCalc.h>
 #include <Arduino.h>
+#include <WarningHandler.h>
+#include <main.h>
 
-
-#define BREAK_ROOM 0.1
-#define CONTROL_ROOM 0.5
-#define REACTOR_ROOM 1.6
-#define HAZMAT 5
-#define CLOTHES 1
 #define RAD_TOLERANCE 500000
 
 int reactorRadPerSec;
 double roomCoef;
 int protectiveCoef;
-int radValue;
+unsigned long int radValue = 0;
 int humanRadPerSec;
 
 void setupRadCalc(int reactRad, double roomConst, int protConst) {
-    humanRadPerSec = 0;
     reactorRadPerSec = reactRad;
     roomCoef = roomConst;
     protectiveCoef = protConst;
+    humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
 }
 
 float getRadCalcData(){
@@ -36,5 +32,9 @@ void updateRadCalcData(int reactRad, double roomConst, int protConst){
 
 void updateRadTimer() {
     radValue += humanRadPerSec;
-    // if(radValue >= RAD_TOLERANCE)
+    Serial.print(radValue);
+    Serial.println(" ");
+     if(radValue >= RAD_TOLERANCE) {
+         startBuzzer();
+     }
 }
