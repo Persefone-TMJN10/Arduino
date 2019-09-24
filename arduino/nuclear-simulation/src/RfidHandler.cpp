@@ -8,6 +8,7 @@
 #include <UserHandler.h>
 #include <main.h>
 #include <WarningHandler.h>
+#include <RadiationCalc.h>
 
 
 
@@ -59,6 +60,7 @@ void authorizeUser() {
   if (checkIfRegistered(uid)){
     if(isClockedIn(uid)){
       btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
+      btSendRadData(RADIATION_VALUE, uid, getRadCalcData());
       startBuzzer();
       digitalWrite(LED_G, HIGH);
       

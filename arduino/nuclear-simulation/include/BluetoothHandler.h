@@ -5,4 +5,4 @@ void setupBluetooth();
 void btLoop();
 
 void btSendData(int, char*, int);
-void btSendRadData(int , char* , float );
+void btSendRadData(int , char* , unsigned long int );
