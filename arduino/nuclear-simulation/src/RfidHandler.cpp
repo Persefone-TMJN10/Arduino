@@ -6,6 +6,8 @@
 #include <BluetoothHandler.h>
 #include <UserHandler.h>
 #include <main.h>
+#include <WarningHandler.h>
+
 
 
 MFRC522 mfrc522(SS_PIN, RST_PIN); // FRID RC522 instance
@@ -49,11 +51,13 @@ void authorizeUser() {
   if (checkIfRegistered(uid)){
     if(isClockedIn(uid)){
       btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
+      startBuzzer();
       digitalWrite(LED_G, HIGH);
       delay(ACCESS_DELAY);
       digitalWrite(LED_G, LOW);
     } else {
       btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
+      startBuzzer();
       digitalWrite(LED_B, HIGH);
       delay(ACCESS_DELAY);
       digitalWrite(LED_B, LOW);
