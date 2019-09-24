@@ -29,6 +29,7 @@ void btSendData(int protocol, char* uniqueID, int clockedStatus) {
   hc06.print(clockedStatus);
   hc06.print(",");
   delay(20);
+  
 
 }
 

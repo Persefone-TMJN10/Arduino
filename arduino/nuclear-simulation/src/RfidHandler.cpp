@@ -32,9 +32,9 @@ void rc522ScannerLoop() {
 	if ( ! mfrc522.PICC_ReadCardSerial()) {
 		return;
 	}
-
   getUniqueID();
   authorizeUser();
+  
 
 }
 
@@ -50,12 +50,12 @@ void authorizeUser() {
     if(isClockedIn(uid)){
       btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
       digitalWrite(LED_G, HIGH);
-      delay(ACCESS_DELAY);
+      delay(2000);
       digitalWrite(LED_G, LOW);
     } else {
       btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
       digitalWrite(LED_B, HIGH);
-      delay(ACCESS_DELAY);
+      delay(2000);
       digitalWrite(LED_B, LOW);
     }
 
