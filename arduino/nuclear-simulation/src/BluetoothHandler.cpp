@@ -32,7 +32,7 @@ void btSendData(int protocol, char* uniqueID, int clockedStatus) {
 
 }
 
-void btSendRadData(int protocol, char* uniqueID, unsigned long int radValue) {
+void btSendRadData(int protocol, char* uniqueID, float radValue) {
   hc06.print(protocol);
   hc06.print(",");
   hc06.print(uniqueID);
