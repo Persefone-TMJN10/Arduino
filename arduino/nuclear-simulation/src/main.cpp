@@ -6,10 +6,10 @@
 #include <RfidHandler.h>
 #include <BluetoothHandler.h>
 #include <UserHandler.h>
+#include <RadiationCalc.h>
 #include <main.h>
 
-void blink();
-TimedAction countDown = TimedAction(1000, blink);
+TimedAction countDown = TimedAction(1000, updateRadTimer);
 
 
 
@@ -18,6 +18,7 @@ void setup() {
   pinMode(LED_G, OUTPUT);
   pinMode(LED_B, OUTPUT);
   pinMode(3, OUTPUT);
+  setupRadCalc(1, 20, 1);
   setupRFID();
   setupBluetooth();
   
@@ -28,12 +29,6 @@ void loop() {
   rc522ScannerLoop();
   countDown.check();
   // btLoop();
-}
-
-void blink () {
-  digitalWrite(3, HIGH);
-  delay(200);
-  digitalWrite(3, LOW);
 }
 
 

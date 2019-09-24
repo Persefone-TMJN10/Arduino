@@ -1,6 +1,7 @@
 #include <MFRC522.h>
 #include <Arduino.h>
 #include <SPI.h>
+#include <TimedAction.h>
 
 #include <RfidHandler.h>
 #include <BluetoothHandler.h>
@@ -9,6 +10,7 @@
 
 
 MFRC522 mfrc522(SS_PIN, RST_PIN); // FRID RC522 instance
+TimedAction accessDelay = TimedAction(2000, accessTimeReached);
 
 
 char uid[9]; // 4 x 2 chars for the 4 bytes + trailing '\0'
@@ -32,9 +34,8 @@ void rc522ScannerLoop() {
 	if ( ! mfrc522.PICC_ReadCardSerial()) {
 		return;
 	}
-  getUniqueID();
-  authorizeUser();
-  
+
+  accessDelay.check();
 
 }
 
@@ -45,23 +46,23 @@ void getUniqueID () {
       }
 }
 
+void accessTimeReached() {
+  digitalWrite(LED_G, LOW);
+  digitalWrite(LED_B, LOW);
+  getUniqueID();
+  authorizeUser();
+}
+
 void authorizeUser() {
   if (checkIfRegistered(uid)){
     if(isClockedIn(uid)){
       btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
       digitalWrite(LED_G, HIGH);
-      delay(2000);
-      digitalWrite(LED_G, LOW);
+      
     } else {
       btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
       digitalWrite(LED_B, HIGH);
-      delay(2000);
-      digitalWrite(LED_B, LOW);
     }
-
-  } else {
-    //turn on red led
-    delay(DENIED_DELAY);
   }
 }
 
