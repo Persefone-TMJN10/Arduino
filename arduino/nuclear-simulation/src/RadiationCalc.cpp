@@ -7,15 +7,34 @@
 #define REACTOR_ROOM 1.6
 #define HAZMAT 5
 #define CLOTHES 1
+#define RAD_TOLERANCE 500000
 
+int reactorRadPerSec;
+double roomCoef;
+int protectiveCoef;
+int radValue;
+int humanRadPerSec;
 
-float getRadCalcData(int reactorRadPerSec, double roomCoef, int protectiveCoef){
+void setupRadCalc(int reactRad, double roomConst, int protConst) {
+    humanRadPerSec = 0;
+    reactorRadPerSec = reactRad;
+    roomCoef = roomConst;
+    protectiveCoef = protConst;
+}
 
-    int humanRadPerSec;
+float getRadCalcData(){
+    return (reactorRadPerSec*roomCoef)/protectiveCoef;
+}
+
+void updateRadCalcData(int reactRad, double roomConst, int protConst){
     reactorRadPerSec = 30; //change when we have potentiometer
     roomCoef = 0.5; //change when we have room simulation
     protectiveCoef = 1; //change when we have hazmat simulation
     humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
+    return ;
+}
 
-    return humanRadPerSec;
+void updateRadTimer() {
+    radValue += humanRadPerSec;
+    // if(radValue >= RAD_TOLERANCE)
 }
