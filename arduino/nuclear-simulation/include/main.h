@@ -4,6 +4,7 @@
 
 #define LED_G 5 // Define green LED to pin 5
 #define LED_B 4 // Define blue LED to pin 4
+#define LED_R 3 // Define red LED to pin 3
 
 // Clocked in and out status
 #define CLOCKED_IN 1

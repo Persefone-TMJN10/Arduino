@@ -8,7 +8,7 @@
 int reactorRadPerSec;
 double roomCoef;
 int protectiveCoef;
-unsigned long int radValue = 0;
+unsigned long int radValue = 499980;
 int humanRadPerSec;
 
 void setupRadCalc(int reactRad, double roomConst, int protConst) {
@@ -36,5 +36,6 @@ void updateRadTimer() {
     Serial.println(" ");
      if(radValue >= RAD_TOLERANCE) {
          startBuzzer();
+         digitalWrite(LED_R, HIGH);
      }
 }
