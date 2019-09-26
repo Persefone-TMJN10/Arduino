@@ -61,12 +61,10 @@ void authorizeUser() {
     if(isClockedIn(uid)){
       btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
       btSendRadData(RADIATION_VALUE, uid, getRadCalcData());
-      startBuzzer();
       digitalWrite(LED_G, HIGH);
       
     } else {
       btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
-      startBuzzer();
       digitalWrite(LED_B, HIGH);
     }
   }

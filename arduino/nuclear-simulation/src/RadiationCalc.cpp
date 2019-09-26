@@ -35,7 +35,6 @@ void updateRadTimer() {
     Serial.print(radValue);
     Serial.println(" ");
      if(radValue >= RAD_TOLERANCE) {
-         startBuzzer();
-         digitalWrite(LED_R, HIGH);
+         //startBuzzer();
      }
 }
