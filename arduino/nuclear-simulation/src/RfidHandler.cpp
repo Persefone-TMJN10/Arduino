@@ -9,6 +9,7 @@
 #include <main.h>
 #include <WarningHandler.h>
 #include <RadiationCalc.h>
+#include <LcdHandler.h>
 
 
 
@@ -71,11 +72,12 @@ void authorizeUser() {
       btSendRadData(RADIATION_VALUE, uid, getRadCalcData());
       enableCountDown();
       digitalWrite(LED_G, HIGH);
-      
+      printClockedStatus(CLOCKED_IN);
     } else {
       btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
       resetCountDown();
       digitalWrite(LED_B, HIGH);
+      printClockedStatus(CLOCKED_OUT);
     }
   }
 }
