@@ -19,7 +19,7 @@ void setup() {
   pinMode(LED_B, OUTPUT);
   pinMode(LED_R, OUTPUT);
   pinMode(3, OUTPUT);
-  setupRadCalc(30, CONTROL_ROOM, HAZMAT);
+  setupRadCalc(30, BREAK_ROOM, HAZMAT);
   setupRFID();
   setupBluetooth();
   

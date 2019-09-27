@@ -9,4 +9,5 @@ void getUniqueID();
 void authorizeUser();
 void accessTimeReached();
 void storeHexRepresentation(char *b, const byte v);
+void turnOffLed();
 

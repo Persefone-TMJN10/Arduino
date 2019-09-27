@@ -14,6 +14,7 @@
 
 MFRC522 mfrc522(SS_PIN, RST_PIN); // FRID RC522 instance
 TimedAction accessDelay = TimedAction(2000, accessTimeReached);
+TimedAction resetLed = TimedAction(1800, turnOffLed);
 
 
 char uid[9]; // 4 x 2 chars for the 4 bytes + trailing '\0'
@@ -28,8 +29,9 @@ void setupRFID() {
 }
 
 void rc522ScannerLoop() {
+  resetLed.check();
   	// Look for new cards
-	if ( ! mfrc522.PICC_IsNewCardPresent()) {
+  if ( ! mfrc522.PICC_IsNewCardPresent()) {
 		return;
 	}
 
@@ -37,9 +39,14 @@ void rc522ScannerLoop() {
 	if ( ! mfrc522.PICC_ReadCardSerial()) {
 		return;
 	}
-
   accessDelay.check();
+  
 
+}
+
+void turnOffLed() {
+    digitalWrite(LED_G, LOW);
+    digitalWrite(LED_B, LOW);
 }
 
 // RFID Unique ID HEX graber
@@ -50,23 +57,21 @@ void getUniqueID () {
 }
 
 void accessTimeReached() {
-  digitalWrite(LED_G, LOW);
-  digitalWrite(LED_B, LOW);
+
   getUniqueID();
   authorizeUser();
 }
 
 void authorizeUser() {
   if (checkIfRegistered(uid)){
+    resetLed.reset();
     if(isClockedIn(uid)){
       btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
       btSendRadData(RADIATION_VALUE, uid, getRadCalcData());
-      startBuzzer();
       digitalWrite(LED_G, HIGH);
       
     } else {
       btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
-      startBuzzer();
       digitalWrite(LED_B, HIGH);
     }
   }
