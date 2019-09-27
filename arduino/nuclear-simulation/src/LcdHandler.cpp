@@ -8,6 +8,7 @@ char* clockedStatus;
 byte hours;
 byte minutes;
 byte seconds;
+int clockedBool;
 
 void setupLCD(){
    // lcd.setCursor(0, 0);
@@ -19,13 +20,20 @@ void updateLCD() {
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print(clockedStatus);
-    if (clockedStatus) {
+    if (clockedBool) {
         lcd.setCursor(0,1);
         lcd.print(hours);
         lcd.print(":");
         lcd.print(minutes);
         lcd.print(":");
         lcd.print(seconds);
+    } else {
+        lcd.setCursor(0,1);
+        lcd.print("0");
+        lcd.print(":");
+        lcd.print("0");
+        lcd.print(":");
+        lcd.print("00");
     }
 }
 
@@ -35,6 +43,7 @@ void printTestLCD(){
 
 void printClockedStatus(int status) {
     lcd.setCursor(0,0);
+    clockedBool = status;
     if (status) {
         clockedStatus = "Clocked In";
     } else {
@@ -47,4 +56,9 @@ void printTimeLeft(byte h, byte m, byte s) {
     hours = h;
     minutes = m;
     seconds = s;
+}
+
+void printWarning() {
+    lcd.setCursor(9,1);
+    lcd.print("WARNING");
 }

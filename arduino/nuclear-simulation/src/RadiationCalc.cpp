@@ -51,8 +51,10 @@ void updateRadTimer() {
     byte minute = (mili / ms_per_min);
     mili -= (minute * ms_per_min);
     byte second = (mili / ms_per_sec);
-    printTimeLeft(hour,minute,second);
-    updateLCD();
+    if (second < 61) {
+        printTimeLeft(hour,minute,second);
+        updateLCD();
+    }
     Serial.print(hour);
     Serial.print(":");
     Serial.print(minute);
@@ -60,6 +62,7 @@ void updateRadTimer() {
     Serial.print(second);
     Serial.println("");
      if(radValue >= RAD_TOLERANCE) {
+         printWarning();
          startBuzzer();
      }
 }
