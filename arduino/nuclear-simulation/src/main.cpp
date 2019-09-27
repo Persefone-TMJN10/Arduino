@@ -2,6 +2,7 @@
 #include <MFRC522.h>
 #include <SPI.h>
 #include <TimedAction.h>
+#include <Wire.h>
 
 #include <RfidHandler.h>
 #include <BluetoothHandler.h>
