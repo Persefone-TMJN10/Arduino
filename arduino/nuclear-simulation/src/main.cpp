@@ -15,12 +15,13 @@ TimedAction countDown = TimedAction(1000, updateRadTimer);
 
 void setup() {
   // put your setup code here, to run once:
+  countDown.disable();
   pinMode(LED_G, OUTPUT);
   pinMode(LED_B, OUTPUT);
   pinMode(LED_R, OUTPUT);
   pinMode(3, OUTPUT);
-  setupRadCalc(30, BREAK_ROOM, HAZMAT);
   setupRFID();
+  setupRadCalc(400000, BREAK_ROOM, HAZMAT);
   setupBluetooth();
   
 }
@@ -30,6 +31,15 @@ void loop() {
   rc522ScannerLoop();
   countDown.check();
   // btLoop();
+}
+
+void enableCountDown() {
+  countDown.enable();
+}
+
+void resetCountDown() {
+  resetRadValue();
+  countDown.disable();
 }
 
 

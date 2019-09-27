@@ -57,7 +57,6 @@ void getUniqueID () {
 }
 
 void accessTimeReached() {
-
   getUniqueID();
   authorizeUser();
 }
@@ -68,10 +67,12 @@ void authorizeUser() {
     if(isClockedIn(uid)){
       btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
       btSendRadData(RADIATION_VALUE, uid, getRadCalcData());
+      enableCountDown();
       digitalWrite(LED_G, HIGH);
       
     } else {
       btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
+      resetCountDown();
       digitalWrite(LED_B, HIGH);
     }
   }

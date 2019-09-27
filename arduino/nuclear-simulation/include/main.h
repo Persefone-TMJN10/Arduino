@@ -32,3 +32,7 @@
 #define REACTOR_ROOM 1.6
 #define HAZMAT 5
 #define CLOTHES 1
+
+// Function Defenition
+void enableCountDown();
+void resetCountDown();

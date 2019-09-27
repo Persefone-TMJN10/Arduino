@@ -4,6 +4,9 @@
 #include <main.h>
 
 #define RAD_TOLERANCE 500000
+#define ms_per_hour  3600000
+#define ms_per_min    60000
+#define ms_per_sec    1000
 
 float reactorRadPerSec;
 float roomCoef;
@@ -11,11 +14,19 @@ float protectiveCoef;
 double radValue;
 float humanRadPerSec;
 
-void setupRadCalc(int reactRad, float roomConst, int protConst) {
-    reactorRadPerSec = (float )reactRad;
+void setupRadCalc(float reactRad, float roomConst, float protConst) {
+    reactorRadPerSec = reactRad;
     roomCoef = roomConst;
-    protectiveCoef = (float)protConst;
+    protectiveCoef = protConst;
     humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
+    Serial.print(humanRadPerSec);
+    Serial.print(":");
+    Serial.print(reactorRadPerSec);
+    Serial.print(":");
+    Serial.print(roomCoef);
+    Serial.print(":");
+    Serial.print(protectiveCoef);
+    Serial.println("");
 }
 
 float getRadCalcData(){
@@ -32,10 +43,25 @@ void updateRadCalcData(int reactRad, float roomConst, int protConst){
 
 void updateRadTimer() {
     radValue += humanRadPerSec;
-    Serial.print(radValue);
-    Serial.println(" ");
+    double radLeft = RAD_TOLERANCE - radValue;
+    float mili = (radLeft/humanRadPerSec)*1000;
+    byte hour = (mili / ms_per_hour);
+    mili -= (hour * ms_per_hour);
+    byte minute = (mili / ms_per_min);
+    mili -= (minute * ms_per_min);
+    byte second = (mili / ms_per_sec);
+    Serial.print(hour);
+    Serial.print(":");
+    Serial.print(minute);
+    Serial.print(":");
+    Serial.print(second);
+    Serial.println("");
      if(radValue >= RAD_TOLERANCE) {
          startBuzzer();
          digitalWrite(LED_R, HIGH);
      }
+}
+
+void resetRadValue() {
+    radValue = 0;
 }
