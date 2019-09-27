@@ -1,5 +1,6 @@
 
-void setupRadCalc(int,double,int);
-void updateRadCalcData(int,double,int); // (Reactor radiation per second, Room coefficient, protective gear coefficient)
+void setupRadCalc(float,float,float);
+void updateRadCalcData(int,float,int); // (Reactor radiation per second, Room coefficient, protective gear coefficient)
 float getRadCalcData();
 void updateRadTimer();
+void resetRadValue();

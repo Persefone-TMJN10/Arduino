@@ -4,7 +4,6 @@
 
 #define LED_G 5 // Define green LED to pin 5
 #define LED_B 4 // Define blue LED to pin 4
-#define LED_R 3 // Define red LED to pin 3
 
 // Clocked in and out status
 #define CLOCKED_IN 1
@@ -33,6 +32,7 @@
 #define HAZMAT 5
 #define CLOTHES 1
 
+<<<<<<< HEAD
 //LCD Pin defines
 #define RS_PIN 3
 #define E_PIN 14 //A0
@@ -45,7 +45,8 @@
 #define D6_PIN 17 //A3
 #define D7_PIN 18 //A4
 
+=======
 // Function Defenition
 void enableCountDown();
 void resetCountDown();
-
+>>>>>>> 75c71f53229eb0798da0d544a1d0320b333d8605

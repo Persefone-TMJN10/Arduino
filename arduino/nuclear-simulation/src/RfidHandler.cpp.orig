@@ -39,7 +39,6 @@ void rc522ScannerLoop() {
 	if ( ! mfrc522.PICC_ReadCardSerial()) {
 		return;
 	}
-
   accessDelay.check();
   
 
@@ -58,7 +57,6 @@ void getUniqueID () {
 }
 
 void accessTimeReached() {
-
   getUniqueID();
   authorizeUser();
 }
@@ -69,12 +67,18 @@ void authorizeUser() {
     if(isClockedIn(uid)){
       btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
       btSendRadData(RADIATION_VALUE, uid, getRadCalcData());
+<<<<<<< HEAD
+=======
       enableCountDown();
+>>>>>>> 75c71f53229eb0798da0d544a1d0320b333d8605
       digitalWrite(LED_G, HIGH);
       
     } else {
       btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
+<<<<<<< HEAD
+=======
       resetCountDown();
+>>>>>>> 75c71f53229eb0798da0d544a1d0320b333d8605
       digitalWrite(LED_B, HIGH);
     }
   }
