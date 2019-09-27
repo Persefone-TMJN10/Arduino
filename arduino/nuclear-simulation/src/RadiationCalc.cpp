@@ -2,6 +2,7 @@
 #include <Arduino.h>
 #include <WarningHandler.h>
 #include <main.h>
+#include <LcdHandler.h>
 
 #define RAD_TOLERANCE 500000
 #define ms_per_hour  3600000
@@ -50,6 +51,8 @@ void updateRadTimer() {
     byte minute = (mili / ms_per_min);
     mili -= (minute * ms_per_min);
     byte second = (mili / ms_per_sec);
+    printTimeLeft(hour,minute,second);
+    updateLCD();
     Serial.print(hour);
     Serial.print(":");
     Serial.print(minute);
