@@ -46,7 +46,7 @@ void loop() {
   countDown.check();
   radPoll.check();
   // btLoop();
-  debounceButton();
+  hazmatButton();
   roomButton();
 }
 

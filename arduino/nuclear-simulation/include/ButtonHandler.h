@@ -1,3 +1,3 @@
 void setupButtons();
-void debounceButton();
+void hazmatButton();
 void roomButton();
