@@ -54,6 +54,8 @@ void updateRadTimer() {
     radValue += humanRadPerSec;
     double radLeft = RAD_TOLERANCE - radValue;
 
+    Serial.println(protectiveCoef);
+
     float mili = (radLeft/humanRadPerSec)*1000;
     byte hour = (mili / ms_per_hour);
     mili -= (hour * ms_per_hour);
@@ -86,6 +88,7 @@ void updateRadValue(int radVal) {
 }
 
 void updateRoomStatus(int roomVal) {
+     Serial.println("ROOM CHANGE");
     roomStatus = roomVal;
     switch(roomVal) {
         case 0:
@@ -99,6 +102,7 @@ void updateRoomStatus(int roomVal) {
 }
 
 void updateHazmatStatus(int hazmatVal) {
+    Serial.println("HAZMAT CHANGE");
     hazmatStatus = hazmatVal;
     switch(hazmatVal) {
         case 0:
