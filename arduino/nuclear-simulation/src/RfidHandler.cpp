@@ -68,8 +68,7 @@ void authorizeUser() {
   if (checkIfRegistered(uid)){
     resetLed.reset();
     if(isClockedIn(uid)){
-      btSendData(CLOCKED_STATUS, uid, CLOCKED_IN);
-      btSendRadData(RADIATION_VALUE, uid, getRadCalcData());
+      btSendInitialSetup(CLOCKED_IN, uid, getRadCalcData, 0, 0);
       enableCountDown();
       digitalWrite(LED_G, HIGH);
       printClockedStatus(CLOCKED_IN);
