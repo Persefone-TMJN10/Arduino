@@ -20,8 +20,11 @@
 #define TX_PIN 7
 
 // Bluetooth protocol
-#define CLOCKED_STATUS 0 // Data associated with clocked in or out
-#define RADIATION_VALUE 1 // Data associated with the calculated radiation value
+#define PROT_CLOCKED_IN 0 // Data associated with clocked in or out
+#define PROT_CLOCKED_OUT 1 // Data associated with the calculated radiation value
+#define PROT_RAD_STATUS 2
+#define PROT_HAZMAT_STATUS 3
+#define PROT_ROOM_STATUS 4
 
 //Piezo Buzzer pin
 #define BUZZER_PIN 8

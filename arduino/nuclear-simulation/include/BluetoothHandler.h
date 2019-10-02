@@ -8,7 +8,7 @@ void btSendInitialSetup(int protocol, char* uniqueID, float radValue, int hazmat
 
 void btSendClockedOut(int protocol, char* uniqueId);
 
-void btSendRadData(int protocol, char* uniqueID, float radValue);
+void btSendRadData(int protocol, float radValue);
 
 void btSendHazmatStatus(int protocol, int hazmatStatus);
 

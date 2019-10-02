@@ -16,6 +16,11 @@ void btLoop() {
 }
 
 void btSendInitialSetup(int protocol, char* uniqueID, float radValue, int hazmatStatus, int roomId) {
+  Serial.println(protocol);
+    Serial.println(uniqueID);
+      Serial.println(radValue);
+        Serial.println(hazmatStatus);
+          Serial.println(roomId);
   hc06.print(protocol);
   hc06.print(",");
   hc06.print(uniqueID);
@@ -38,10 +43,8 @@ void btSendClockedOut(int protocol, char* uniqueId) {
   delay(20);
 }
 
-void btSendRadData(int protocol, char* uniqueID, float radValue) {
+void btSendRadData(int protocol, float radValue) {
   hc06.print(protocol);
-  hc06.print(",");
-  hc06.print(uniqueID);
   hc06.print(",");
   hc06.print(radValue);
   hc06.print(";");
