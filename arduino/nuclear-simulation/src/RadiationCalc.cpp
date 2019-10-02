@@ -19,6 +19,7 @@ int roomStatus;
 int hazmatStatus;
 
 
+
 void setupRadCalc(float reactRad, float roomConst, float protConst) {
     reactorRadPerSec = reactRad;
     roomCoef = roomConst;
@@ -52,6 +53,7 @@ void updateRadTimer() {
     humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
     radValue += humanRadPerSec;
     double radLeft = RAD_TOLERANCE - radValue;
+
     float mili = (radLeft/humanRadPerSec)*1000;
     byte hour = (mili / ms_per_hour);
     mili -= (hour * ms_per_hour);
@@ -68,6 +70,7 @@ void updateRadTimer() {
     Serial.print(":");
     Serial.print(second);
     Serial.println("");
+
      if(radValue >= RAD_TOLERANCE) {
          printWarning();
          startBuzzer();

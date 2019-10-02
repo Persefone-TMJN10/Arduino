@@ -32,7 +32,7 @@ void setup() {
   //pinMode(LED_R, OUTPUT);
   pinMode(3, OUTPUT);
   setupRFID();
-  setupRadCalc(400000, BREAK_ROOM, HAZMAT);
+  setupRadCalc(400000, BREAK_ROOM, CLOTHES);
   setupRadChange(30);
   setupBluetooth();
   setupLCD();
@@ -42,7 +42,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   rc522ScannerLoop();
   countDown.check();
-  // radPoll.check();
+  radPoll.check();
   // btLoop();
 }
 
