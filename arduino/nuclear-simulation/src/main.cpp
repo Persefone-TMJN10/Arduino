@@ -10,10 +10,13 @@
 #include <RadiationCalc.h>
 #include <main.h>
 #include <LcdHandler.h>
+#include <RadiationChangeHandler.h>
+
 
 TimedAction countDown = TimedAction(1000, updateRadTimer);
+TimedAction radPoll = TimedAction(1900, pollRadValue);
 
-
+int val = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -25,10 +28,12 @@ void setup() {
   pinMode(D5_PIN, OUTPUT);
   pinMode(D6_PIN, OUTPUT);
   pinMode(D7_PIN, OUTPUT);
+  // Potentiometer pin
   //pinMode(LED_R, OUTPUT);
   pinMode(3, OUTPUT);
   setupRFID();
   setupRadCalc(400000, BREAK_ROOM, HAZMAT);
+  setupRadChange(30);
   setupBluetooth();
   setupLCD();
 }
@@ -37,6 +42,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   rc522ScannerLoop();
   countDown.check();
+  radPoll.check();
   // btLoop();
 }
 
