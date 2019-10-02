@@ -69,12 +69,12 @@ void authorizeUser() {
   if (checkIfRegistered(uid)){
     resetLed.reset();
     if(isClockedIn(uid)){
-      btSendInitialSetup(CLOCKED_IN, uid, getRadValue(), 0, 0);
+      btSendInitialSetup(PROT_CLOCKED_IN, uid, getRadValue(), 0, 0);
       enableCountDown();
       digitalWrite(LED_G, HIGH);
       printClockedStatus(CLOCKED_IN);
     } else {
-      btSendClockedOut(CLOCKED_STATUS, uid);
+      btSendClockedOut(PROT_CLOCKED_OUT, uid);
       resetCountDown();
       digitalWrite(LED_B, HIGH);
       printClockedStatus(CLOCKED_OUT);

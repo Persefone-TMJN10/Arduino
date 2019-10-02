@@ -42,7 +42,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   rc522ScannerLoop();
   countDown.check();
-  radPoll.check();
+  // radPoll.check();
   // btLoop();
 }
 
