@@ -49,3 +49,6 @@
 void enableCountDown();
 void resetCountDown();
 
+//Button Pin Defines
+#define HAZMAT_PIN 2
+

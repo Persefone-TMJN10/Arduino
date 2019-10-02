@@ -10,6 +10,7 @@
 #include <RadiationCalc.h>
 #include <main.h>
 #include <LcdHandler.h>
+#include <ButtonHandler.h>
 
 TimedAction countDown = TimedAction(1000, updateRadTimer);
 
@@ -31,6 +32,7 @@ void setup() {
   setupRadCalc(400000, BREAK_ROOM, HAZMAT);
   setupBluetooth();
   setupLCD();
+  setupButtons();
 }
 
 void loop() {
@@ -38,6 +40,7 @@ void loop() {
   rc522ScannerLoop();
   countDown.check();
   // btLoop();
+  debounceButton();
 }
 
 void enableCountDown() {

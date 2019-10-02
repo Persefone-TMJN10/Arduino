@@ -1,0 +1,2 @@
+void setupButtons();
+void debounceButton();
