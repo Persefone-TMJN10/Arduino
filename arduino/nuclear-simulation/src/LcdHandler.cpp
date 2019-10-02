@@ -1,6 +1,7 @@
 #include <LiquidCrystal.h>
 #include <main.h>
 #include <LcdHandler.h>
+#include <RadiationChangeHandler.h>
 
 LiquidCrystal lcd(RS_PIN, E_PIN, D4_PIN, D5_PIN, D6_PIN, D7_PIN);
 
@@ -13,7 +14,9 @@ int clockedBool;
 void setupLCD(){
    // lcd.setCursor(0, 0);
     lcd.begin(16,2);
-    lcd.print("Hello World");
+    lcd.print("\\Nuclear Sim\\");
+    lcd.setCursor(0,1);
+    lcd.print("-:Persefone:-");
 }
 
 void updateLCD() {
@@ -22,19 +25,26 @@ void updateLCD() {
     lcd.print(clockedStatus);
     if (clockedBool) {
         lcd.setCursor(0,1);
-        lcd.print(hours);
-        lcd.print(":");
-        lcd.print(minutes);
-        lcd.print(":");
-        lcd.print(seconds);
+        if (hours > 100) {
+            lcd.print("time>100h");
+        } else {
+            lcd.print(hours);
+            lcd.print(":");
+            lcd.print(minutes);
+            lcd.print(":");
+            lcd.print(seconds);
+        }
     } else {
         lcd.setCursor(0,1);
-        lcd.print("0");
+        lcd.print("-");
         lcd.print(":");
-        lcd.print("0");
+        lcd.print("-");
         lcd.print(":");
-        lcd.print("00");
+        lcd.print("--");
     }
+    lcd.setCursor(9,1);
+    lcd.print("RAD:");
+    lcd.print((int)getRadValue());
 }
 
 void printTestLCD(){
