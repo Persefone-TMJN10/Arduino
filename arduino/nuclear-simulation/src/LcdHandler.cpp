@@ -11,6 +11,9 @@ byte minutes;
 byte seconds;
 int clockedBool;
 
+int roomVal;
+int hazmatVal;
+
 void setupLCD(){
    // lcd.setCursor(0, 0);
     lcd.begin(16,2);
@@ -45,6 +48,12 @@ void updateLCD() {
     lcd.setCursor(9,1);
     lcd.print("RAD:");
     lcd.print((int)getRadValue());
+
+    lcd.setCursor(7,0);
+    lcd.print("HZ:");
+    lcd.print(hazmatVal);
+    lcd.print(" Rm:");
+    lcd.print(roomVal);
 }
 
 void printTestLCD(){
@@ -55,9 +64,9 @@ void printClockedStatus(int status) {
     lcd.setCursor(0,0);
     clockedBool = status;
     if (status) {
-        clockedStatus = "Clocked In";
+        clockedStatus = "Clk In";
     } else {
-        clockedStatus = "Clocked out";
+        clockedStatus = "Clk out";
     }
     updateLCD();
 }
@@ -71,4 +80,12 @@ void printTimeLeft(byte h, byte m, byte s) {
 void printWarning() {
     lcd.setCursor(9,1);
     lcd.print("WARNING");
+}
+
+void updateLcdRoomStatus(int roomTemp) {
+    roomVal = roomTemp;
+}
+
+void updateLcdHazmatStatus(int hazmatTemp) {
+    hazmatVal = hazmatTemp;
 }

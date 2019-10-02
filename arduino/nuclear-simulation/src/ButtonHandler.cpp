@@ -3,6 +3,7 @@
 #include <main.h>
 #include <SPI.h>
 #include <BluetoothHandler.h>
+#include <LcdHandler.h>
 
 //HAZMAT 
 int hazmatButtonState;             // the current reading from the hazmat input pin
@@ -42,11 +43,13 @@ void debounceButton() {
             Serial.print("Hazmat Button pressed\n");
             if(hazmatState == false){
               //  btSendHazmatStatus(PROT_HAZMAT_STATUS, 1);
+                updateLcdHazmatStatus(1);
                 Serial.print("Hazmat on\n");
                 hazmatState = true;
             }
             else{
               //  btSendHazmatStatus(PROT_HAZMAT_STATUS, 0);
+                updateLcdRoomStatus(0);
                 Serial.print("Hazmat off\n");
                 hazmatState = false;
             }
@@ -74,14 +77,17 @@ void roomButton(){
             switch (roomState)
             {
             case 0:
+                updateLcdRoomStatus(0);
                 Serial.print("Change to control room\n");
                 roomState = 1;
                 break;
             case 1:
+                updateLcdRoomStatus(1);
                 Serial.print("Change to reactor room\n");
                 roomState = 2;
                 break;
-            case 2:
+            case 2:      
+                updateLcdRoomStatus(2);
                 Serial.print("Change to break room\n");
                 roomState = 0;
                 break;
