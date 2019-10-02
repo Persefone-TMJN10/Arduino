@@ -15,11 +15,17 @@ float protectiveCoef;
 double radValue;
 float humanRadPerSec;
 
+int roomStatus;
+int hazmatStatus;
+
+
 void setupRadCalc(float reactRad, float roomConst, float protConst) {
     reactorRadPerSec = reactRad;
     roomCoef = roomConst;
     protectiveCoef = protConst;
     humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
+    roomStatus = 0;
+    hazmatStatus = 0;
     Serial.print(humanRadPerSec);
     Serial.print(":");
     Serial.print(reactorRadPerSec);
