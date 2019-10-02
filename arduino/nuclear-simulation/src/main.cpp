@@ -10,11 +10,8 @@
 #include <RadiationCalc.h>
 #include <main.h>
 #include <LcdHandler.h>
-<<<<<<< HEAD
 #include <ButtonHandler.h>
-=======
 #include <RadiationChangeHandler.h>
->>>>>>> 64ff24569bb90f5906a3ad86be6e4ad25cb8a602
 
 
 TimedAction countDown = TimedAction(1000, updateRadTimer);
@@ -50,6 +47,7 @@ void loop() {
   // radPoll.check();
   // btLoop();
   debounceButton();
+  roomButton();
 }
 
 void enableCountDown() {

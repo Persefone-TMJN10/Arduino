@@ -26,8 +26,6 @@
 #define PROT_HAZMAT_STATUS 3
 #define PROT_ROOM_STATUS 4
 
-//Piezo Buzzer pin
-#define BUZZER_PIN 8
 
 // Radiation default data defines
 #define BREAK_ROOM 0.1
@@ -55,4 +53,5 @@ void pollRadValue();
 
 //Button Pin Defines
 #define HAZMAT_PIN 2
+#define ROOM_PIN 8
 
