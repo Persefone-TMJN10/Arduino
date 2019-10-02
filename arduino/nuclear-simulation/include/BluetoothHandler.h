@@ -4,5 +4,12 @@ void setupBluetooth();
 
 void btLoop();
 
-void btSendData(int, char*, int);
-void btSendRadData(int , char* ,float );
+void btSendInitialSetup(int protocol, char* uniqueID, float radValue, int hazmatStatus, int roomId);
+
+void btSendClockedOut(int protocol, char* uniqueId);
+
+void btSendRadData(int protocol, float radValue);
+
+void btSendHazmatStatus(int protocol, int hazmatStatus);
+
+void btSendRoomStatus(int protocol, int roomId);
