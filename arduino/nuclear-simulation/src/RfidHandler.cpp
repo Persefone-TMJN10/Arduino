@@ -10,6 +10,7 @@
 #include <WarningHandler.h>
 #include <RadiationCalc.h>
 #include <LcdHandler.h>
+#include <RadiationChangeHandler.h>
 
 
 
@@ -68,12 +69,12 @@ void authorizeUser() {
   if (checkIfRegistered(uid)){
     resetLed.reset();
     if(isClockedIn(uid)){
-      btSendInitialSetup(CLOCKED_IN, uid, getRadCalcData, 0, 0);
+      btSendInitialSetup(CLOCKED_IN, uid, getRadValue(), 0, 0);
       enableCountDown();
       digitalWrite(LED_G, HIGH);
       printClockedStatus(CLOCKED_IN);
     } else {
-      btSendData(CLOCKED_STATUS, uid, CLOCKED_OUT);
+      btSendClockedOut(CLOCKED_STATUS, uid);
       resetCountDown();
       digitalWrite(LED_B, HIGH);
       printClockedStatus(CLOCKED_OUT);

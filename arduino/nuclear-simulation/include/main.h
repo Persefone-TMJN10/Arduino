@@ -48,4 +48,5 @@
 // Function Defenition
 void enableCountDown();
 void resetCountDown();
+void pollRadValue();
 
