@@ -4,3 +4,16 @@ void updateRadCalcData(int,float,int); // (Reactor radiation per second, Room co
 float getRadCalcData();
 void updateRadTimer();
 void resetRadValue();
+
+void resetRadValue();
+
+void updateRadValue(int radVal);
+
+void updateRoomStatus(int roomVal);
+
+void updateHazmatStatus(int hazmatVal);
+
+int getRoomStatus();
+
+int getHazmatStatus();
+

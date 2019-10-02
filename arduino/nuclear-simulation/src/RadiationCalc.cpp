@@ -49,6 +49,7 @@ void updateRadCalcData(int reactRad, float roomConst, int protConst){
 }
 
 void updateRadTimer() {
+    humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
     radValue += humanRadPerSec;
     double radLeft = RAD_TOLERANCE - radValue;
     float mili = (radLeft/humanRadPerSec)*1000;
@@ -75,4 +76,39 @@ void updateRadTimer() {
 
 void resetRadValue() {
     radValue = 0;
+}
+
+void updateRadValue(int radVal) {
+    reactorRadPerSec = radVal;
+}
+
+void updateRoomStatus(int roomVal) {
+    roomStatus = roomVal;
+    switch(roomVal) {
+        case 0:
+            roomCoef = BREAK_ROOM;
+        case 1:
+            roomCoef = CONTROL_ROOM;
+        case 2:
+            roomCoef = REACTOR_ROOM;
+    }
+
+}
+
+void updateHazmatStatus(int hazmatVal) {
+    hazmatStatus = hazmatVal;
+    switch(hazmatVal) {
+        case 0:
+            protectiveCoef = CLOTHES;
+        case 1:
+            protectiveCoef = HAZMAT;
+    }
+}
+
+int getRoomStatus(){
+    return roomStatus;
+}
+
+int getHazmatStatus(){
+    return hazmatStatus;
 }
