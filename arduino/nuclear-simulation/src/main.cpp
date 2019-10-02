@@ -47,6 +47,7 @@ void loop() {
   radPoll.check();
   // btLoop();
   debounceButton();
+  roomButton();
 }
 
 void enableCountDown() {

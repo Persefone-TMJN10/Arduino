@@ -4,6 +4,6 @@
 
 void startBuzzer(){
 
-tone(BUZZER_PIN, 500, 1000);
-
+// TODO tone(BUZZER_PIN, 500, 1000);
+// TODO
 }
