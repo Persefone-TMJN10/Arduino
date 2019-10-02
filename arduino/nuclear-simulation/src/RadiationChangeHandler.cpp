@@ -4,13 +4,15 @@
 #include <main.h>
 #include <RadiationCalc.h>
 
-float radVal;
+float radVal = 1000;
 
 void setupRadChange(int val) {
     radVal = val;
 }
 
 void pollRadValue(){
+  if (radVal == (analogRead(A5) / 10))
+    return;
   radVal = (analogRead(A5) / 10);
   if(radVal > 100)
     radVal = 100;
