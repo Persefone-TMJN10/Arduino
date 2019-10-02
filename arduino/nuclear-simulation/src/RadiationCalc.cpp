@@ -42,9 +42,6 @@ float getRadCalcData(){
 }
 
 void updateRadCalcData(int reactRad, float roomConst, int protConst){
-    reactorRadPerSec = 30; //change when we have potentiometer
-    roomCoef = 0.5; //change when we have room simulation
-    protectiveCoef = 1; //change when we have hazmat simulation
     humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
     return ;
 }
@@ -93,11 +90,16 @@ void updateRoomStatus(int roomVal) {
     switch(roomVal) {
         case 0:
             roomCoef = BREAK_ROOM;
+            break;
         case 1:
             roomCoef = CONTROL_ROOM;
+            break;
         case 2:
             roomCoef = REACTOR_ROOM;
+            break;
     }
+    
+    Serial.println(roomCoef);
 
 }
 
@@ -107,9 +109,14 @@ void updateHazmatStatus(int hazmatVal) {
     switch(hazmatVal) {
         case 0:
             protectiveCoef = CLOTHES;
+            break;
         case 1:
             protectiveCoef = HAZMAT;
+            break;
     }
+    Serial.println("HAZMAT");
+    Serial.println(hazmatVal);
+    Serial.println(protectiveCoef);
 }
 
 int getRoomStatus(){

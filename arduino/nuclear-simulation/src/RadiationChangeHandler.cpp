@@ -11,9 +11,13 @@ void setupRadChange(int val) {
 }
 
 void pollRadValue(){
-  if (radVal == (analogRead(A5) / 10))
+  int temp = analogRead(A5) / 10;
+  if (radVal == temp)
     return;
-  radVal = (analogRead(A5) / 10);
+  if (radVal  == (temp + 1) || radVal == (temp - 1) ||
+      radVal == (temp + 2)  || radVal == (temp - 2))
+    return;
+  radVal = temp;
   if(radVal > 100)
     radVal = 100;
   Serial.println(radVal);

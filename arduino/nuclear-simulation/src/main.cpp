@@ -16,12 +16,14 @@
 
 TimedAction countDown = TimedAction(1000, updateRadTimer);
 TimedAction radPoll = TimedAction(1900, pollRadValue);
+TimedAction lcdRefresh = TimedAction(500, updateLCD);
 
 int val = 0;
 
 void setup() {
   // put your setup code here, to run once:
   countDown.disable();
+  lcdRefresh.disable();
   pinMode(LED_G, OUTPUT);
   pinMode(LED_B, OUTPUT);
   pinMode(E_PIN, OUTPUT);
@@ -44,13 +46,14 @@ void loop() {
   // put your main code here, to run repeatedly:
   rc522ScannerLoop();
   countDown.check();
-  // radPoll.check();
-  // btLoop();
+  radPoll.check();
+  lcdRefresh.check();
   hazmatButton();
   roomButton();
 }
 
 void enableCountDown() {
+  lcdRefresh.enable();
   countDown.enable();
 }
 
