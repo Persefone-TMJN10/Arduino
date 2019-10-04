@@ -43,16 +43,16 @@ void hazmatButton() {
       if (hazmatButtonState == HIGH) {
             Serial.print("Hazmat Button pressed\n");
             if(hazmatState == false){
-                btSendHazmatStatus(PROT_HAZMAT_STATUS, 1);
                 updateHazmatStatus(1);
                 updateLcdHazmatStatus(1);
+                btSendHazmatStatus(PROT_HAZMAT_STATUS, 1);
                 Serial.print("Hazmat on\n");
                 hazmatState = true;
             }
             else{
-                btSendHazmatStatus(PROT_HAZMAT_STATUS, 0);
                 updateHazmatStatus(0);
                 updateLcdHazmatStatus(0);
+                btSendHazmatStatus(PROT_HAZMAT_STATUS, 0);
                 Serial.print("Hazmat off\n");
                 hazmatState = false;
             }
@@ -80,23 +80,23 @@ void roomButton(){
             switch (roomState)
             {
             case 0:
-                btSendRoomStatus(PROT_ROOM_STATUS, 1);
                 updateRoomStatus(1);
                 updateLcdRoomStatus(1);
+                btSendRoomStatus(PROT_ROOM_STATUS, 1);
                 Serial.print("Change to control room\n");
                 roomState = 1;
                 break;
             case 1:
-                btSendRoomStatus(PROT_ROOM_STATUS, 2);
                 updateRoomStatus(2);
                 updateLcdRoomStatus(2);
+                btSendRoomStatus(PROT_ROOM_STATUS, 2);
                 Serial.print("Change to reactor room\n");
                 roomState = 2;
                 break;
             case 2:      
-                btSendRoomStatus(PROT_ROOM_STATUS, 0);
                 updateRoomStatus(0);
                 updateLcdRoomStatus(0);
+                btSendRoomStatus(PROT_ROOM_STATUS, 0);
                 Serial.print("Change to break room\n");
                 roomState = 0;
                 break;
