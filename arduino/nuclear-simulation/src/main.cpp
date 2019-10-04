@@ -18,7 +18,6 @@ TimedAction countDown = TimedAction(1000, updateRadTimer);
 TimedAction radPoll = TimedAction(1900, pollRadValue);
 TimedAction lcdRefresh = TimedAction(500, updateLCD);
 
-int val = 0;
 
 void setup() {
   // put your setup code here, to run once:

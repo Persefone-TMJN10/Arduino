@@ -17,3 +17,5 @@ int getRoomStatus();
 
 int getHazmatStatus();
 
+double getRadToleranceLeft();
+

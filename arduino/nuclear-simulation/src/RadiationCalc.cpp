@@ -126,3 +126,7 @@ int getRoomStatus(){
 int getHazmatStatus(){
     return hazmatStatus;
 }
+
+double getRadToleranceLeft() {
+    return (RAD_TOLERANCE - radValue);
+}

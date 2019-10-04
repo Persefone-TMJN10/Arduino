@@ -2,6 +2,7 @@
 #include <main.h>
 #include <LcdHandler.h>
 #include <RadiationChangeHandler.h>
+#include <RadiationCalc.h>
 
 LiquidCrystal lcd(RS_PIN, E_PIN, D4_PIN, D5_PIN, D6_PIN, D7_PIN);
 
@@ -45,9 +46,13 @@ void updateLCD() {
         lcd.print(":");
         lcd.print("--");
     }
-    lcd.setCursor(9,1);
-    lcd.print("RAD:");
-    lcd.print((int)getRadValue());
+    if (getRadToleranceLeft() > 0) {
+        lcd.setCursor(9,1);
+        lcd.print("RAD:");
+        lcd.print((int)getRadValue());
+    } else {
+        printWarning();
+    }
 
     lcd.setCursor(7,0);
     lcd.print("HZ:");
