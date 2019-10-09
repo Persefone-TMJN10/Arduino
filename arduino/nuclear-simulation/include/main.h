@@ -1,4 +1,5 @@
 
+// RFID PINS
 #define SS_PIN 10
 #define RST_PIN 9
 
@@ -20,12 +21,11 @@
 #define TX_PIN 7
 
 // Bluetooth protocol
-#define PROT_CLOCKED_IN 0 // Data associated with clocked in or out
-#define PROT_CLOCKED_OUT 1 // Data associated with the calculated radiation value
-#define PROT_RAD_STATUS 2
-#define PROT_HAZMAT_STATUS 3
-#define PROT_ROOM_STATUS 4
-
+#define PROT_CLOCKED_IN 0       // Data associated with clocked in
+#define PROT_CLOCKED_OUT 1      // Data associated with clocked out
+#define PROT_RAD_STATUS 2       // Data associated with the radiation value
+#define PROT_HAZMAT_STATUS 3    // Data associated with hazmat status
+#define PROT_ROOM_STATUS 4      // Data associated with room status
 
 // Radiation default data defines
 #define BREAK_ROOM 0.1
@@ -37,10 +37,6 @@
 //LCD Pin defines
 #define RS_PIN 3
 #define E_PIN 14 //A0
-#define D0_PIN
-#define D1_PIN
-#define D2_PIN
-#define D3_PIN
 #define D4_PIN 15 //A1
 #define D5_PIN 16 //A2
 #define D6_PIN 17 //A3
@@ -50,6 +46,7 @@
 void enableCountDown();
 void resetCountDown();
 void pollRadValue();
+void setupPins();
 
 //Button Pin Defines
 #define HAZMAT_PIN 2

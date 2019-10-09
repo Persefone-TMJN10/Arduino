@@ -31,7 +31,6 @@ boolean isClockedIn(char* uid) {
 
 void setupUsers() {
   strcpy(technician[3].uniqueid, "8053804d");
- 
   for (int i = 0; i < MAX_NR_OF_USERS; i++) {
     technician[i].clockStatus = 0;
     technician[i].radValue = 0;

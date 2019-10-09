@@ -23,18 +23,9 @@ void setup() {
   // put your setup code here, to run once:
   countDown.disable();
   lcdRefresh.disable();
-  pinMode(LED_G, OUTPUT);
-  pinMode(LED_B, OUTPUT);
-  pinMode(E_PIN, OUTPUT);
-  pinMode(D4_PIN, OUTPUT);
-  pinMode(D5_PIN, OUTPUT);
-  pinMode(D6_PIN, OUTPUT);
-  pinMode(D7_PIN, OUTPUT);
-  // Potentiometer pin
-  //pinMode(LED_R, OUTPUT);
-  pinMode(3, OUTPUT);
+  setupPins();
   setupRFID();
-  setupRadCalc(30, BREAK_ROOM, CLOTHES);
+  setupRadCalc(30, BREAK_ROOM, CLOTHES); // default values
   setupRadChange(30);
   setupBluetooth();
   setupLCD();
@@ -59,6 +50,17 @@ void enableCountDown() {
 void resetCountDown() {
   resetRadValue();
   countDown.disable();
+}
+
+void setupPins() {
+  pinMode(LED_G, OUTPUT);
+  pinMode(LED_B, OUTPUT);
+  pinMode(E_PIN, OUTPUT);
+  pinMode(D4_PIN, OUTPUT);
+  pinMode(D5_PIN, OUTPUT);
+  pinMode(D6_PIN, OUTPUT);
+  pinMode(D7_PIN, OUTPUT);
+  pinMode(3, OUTPUT);
 }
 
 

@@ -1,6 +1,5 @@
 #include <RadiationCalc.h>
 #include <Arduino.h>
-#include <WarningHandler.h>
 #include <main.h>
 #include <LcdHandler.h>
 
@@ -27,14 +26,6 @@ void setupRadCalc(float reactRad, float roomConst, float protConst) {
     humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
     roomStatus = 0;
     hazmatStatus = 0;
-    Serial.print(humanRadPerSec);
-    Serial.print(":");
-    Serial.print(reactorRadPerSec);
-    Serial.print(":");
-    Serial.print(roomCoef);
-    Serial.print(":");
-    Serial.print(protectiveCoef);
-    Serial.println("");
 }
 
 float getRadCalcData(){
@@ -50,10 +41,8 @@ void updateRadTimer() {
     humanRadPerSec = (reactorRadPerSec*roomCoef)/protectiveCoef;
     radValue += humanRadPerSec;
     double radLeft = RAD_TOLERANCE - radValue;
-
-    Serial.println(protectiveCoef);
-
     float mili = (radLeft/humanRadPerSec)*1000;
+
     byte hour = (mili / ms_per_hour);
     mili -= (hour * ms_per_hour);
     byte minute = (mili / ms_per_min);
@@ -63,17 +52,9 @@ void updateRadTimer() {
         printTimeLeft(hour,minute,second);
         updateLCD();
     }
-    Serial.print(hour);
-    Serial.print(":");
-    Serial.print(minute);
-    Serial.print(":");
-    Serial.print(second);
-    Serial.println("");
-
-     if(radValue >= RAD_TOLERANCE) {
-         printWarning();
-         startBuzzer();
-     }
+    if(radValue >= RAD_TOLERANCE) {
+        printWarning();
+    }
 }
 
 void resetRadValue() {
@@ -85,7 +66,6 @@ void updateRadValue(int radVal) {
 }
 
 void updateRoomStatus(int roomVal) {
-     Serial.println("ROOM CHANGE");
     roomStatus = roomVal;
     switch(roomVal) {
         case 0:
@@ -98,13 +78,9 @@ void updateRoomStatus(int roomVal) {
             roomCoef = REACTOR_ROOM;
             break;
     }
-    
-    Serial.println(roomCoef);
-
 }
 
 void updateHazmatStatus(int hazmatVal) {
-    Serial.println("HAZMAT CHANGE");
     hazmatStatus = hazmatVal;
     switch(hazmatVal) {
         case 0:
@@ -114,9 +90,6 @@ void updateHazmatStatus(int hazmatVal) {
             protectiveCoef = HAZMAT;
             break;
     }
-    Serial.println("HAZMAT");
-    Serial.println(hazmatVal);
-    Serial.println(protectiveCoef);
 }
 
 int getRoomStatus(){

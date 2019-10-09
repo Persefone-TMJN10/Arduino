@@ -9,19 +9,9 @@ SoftwareSerial hc06(TX_PIN,RX_PIN);
 
 void setupBluetooth() {
   hc06.begin(9600);
-
-}
-
-void btLoop() {
-
 }
 
 void btSendInitialSetup(int protocol, char* uniqueID, float radValue, int hazmatStatus, int roomId) {
-  Serial.println(protocol);
-    Serial.println(uniqueID);
-      Serial.println(radValue);
-        Serial.println(hazmatStatus);
-          Serial.println(roomId);
   hc06.print(protocol);
   hc06.print(",");
   hc06.print(uniqueID);

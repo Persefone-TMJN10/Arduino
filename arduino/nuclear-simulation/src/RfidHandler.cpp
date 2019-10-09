@@ -7,7 +7,6 @@
 #include <BluetoothHandler.h>
 #include <UserHandler.h>
 #include <main.h>
-#include <WarningHandler.h>
 #include <RadiationCalc.h>
 #include <LcdHandler.h>
 #include <RadiationChangeHandler.h>
@@ -37,7 +36,6 @@ void rc522ScannerLoop() {
 		return;
 	}
 
-	// Select one of the cards
 	if ( ! mfrc522.PICC_ReadCardSerial()) {
 		return;
 	}
@@ -60,7 +58,6 @@ void getUniqueID () {
 }
 
 void accessTimeReached() {
-
   getUniqueID();
   authorizeUser();
 }
@@ -83,8 +80,7 @@ void authorizeUser() {
 }
 
 // store on 2 char the Hex represnetation of byte v
-// adds a trailing '\0'
-// so b should point to an array with at least 3 bytes available to contain the representation
+// needs a char[8] atleast for storage
 void storeHexRepresentation(char *b, const byte v) {
   if (v <= 0xF) {
     *b = '0';

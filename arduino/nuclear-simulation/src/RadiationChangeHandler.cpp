@@ -20,7 +20,6 @@ void pollRadValue(){
   radVal = temp;
   if(radVal > 100)
     radVal = 100;
-  Serial.println(radVal);
   updateRadValue(radVal);
   btSendRadData(PROT_RAD_STATUS, (float)radVal);
 }

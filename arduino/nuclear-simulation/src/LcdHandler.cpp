@@ -53,7 +53,6 @@ void updateLCD() {
     } else {
         printWarning();
     }
-
     lcd.setCursor(7,0);
     lcd.print("HZ:");
     lcd.print(hazmatVal);
@@ -61,9 +60,6 @@ void updateLCD() {
     lcd.print(roomVal);
 }
 
-void printTestLCD(){
-    lcd.print("Hello World");
-}
 
 void printClockedStatus(int status) {
     lcd.setCursor(0,0);
